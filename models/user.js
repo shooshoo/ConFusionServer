@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passportLocalMongoose= require('passport-local-mongoose');
 
 var User = new Schema({
-    username:{
+    // PassportLocalMongoose has these feilds
+   /*  username:{
         type: String,
         required: true,
         unique: true
@@ -10,11 +12,13 @@ var User = new Schema({
     password:{
         type: String,
         required: true
-    },
+    }, */ 
     admin:{
         type: Boolean,
         default: false
     }
 });
+
+User.plugin(passportLocalMongoose);
 
 module.exports= mongoose.model('Users',User);
